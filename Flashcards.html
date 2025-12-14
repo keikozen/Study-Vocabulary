@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <a href="index.html" class="home-link">Home</a>
+
+  <!-- CLICK ZONES (DO NOT AFFECT LAYOUT) -->
+  <div id="leftZone"></div>
+  <div id="rightZone"></div>
+
+  <!-- FLASHCARD (UNCHANGED POSITION) -->
+  <div class="flashcard" id="flashcard">
+    <div class="card-face front">
+      <h1 id="word"></h1>
+    </div>
+
+    <div class="card-face back">
+      <p id="pronunciation"></p>
+      <p id="definition"></p>
+      <p id="sentence"></p>
+    </div>
+  </div>
+
+  <script src="flashcards.js"></script>
+</body>
+</html>
