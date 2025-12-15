@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Flashcards</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="flashcards.js"></script>
 </head>
 <body>
 
-  <a href="index.html" class="home-link">Home</a>
+<header class="top-nav">
+  <a href="index.html">← Home</a>
+</header>
 
-  <!-- CLICK ZONES (DO NOT AFFECT LAYOUT) -->
-  <div id="leftZone"></div>
-  <div id="rightZone"></div>
+<main class="flashcard-page">
 
-  <!-- FLASHCARD (UNCHANGED POSITION) -->
-  <div class="flashcard" id="flashcard">
-    <div class="card-face front">
-      <h1 id="word"></h1>
-    </div>
+  <!-- invisible click zones -->
+  <div class="nav-zone left-zone"></div>
 
-    <div class="card-face back">
-      <p id="pronunciation"></p>
-      <p id="definition"></p>
-      <p id="sentence"></p>
+  <div class="card-container">
+    <div class="flashcard" id="flashcard">
+      <div class="card-face card-front">
+        <h1 id="word"></h1>
+      </div>
+
+      <div class="card-face card-back">
+        <p id="pronunciation"></p>
+        <p id="meaning"></p>
+        <p id="sentence"></p>
+      </div>
     </div>
   </div>
 
-  <script src="flashcards.js"></script>
+  <div class="nav-zone right-zone"></div>
+
+</main>
+
 </body>
 </html>
