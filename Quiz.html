@@ -2,19 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Quiz</title>
+  <title>Vocabulary Quiz</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="quiz.js"></script>
 </head>
 <body>
 
-<h2>Quiz</h2>
+<header class="top-nav">
+  <a href="index.html">← Home</a>
+</header>
 
-<div class="quiz-box">
-  <p id="question"></p>
-  <div id="choices"></div>
-  <p id="score"></p>
-</div>
+<main class="quiz-page">
 
-<script src="quiz.js"></script>
+  <h1>Vocabulary Quiz</h1>
+
+  <!-- Quiz container -->
+  <div id="quiz-container">
+
+    <div id="question-box">
+      <p id="question"></p>
+    </div>
+
+    <div id="options">
+      <!-- options injected by quiz.js -->
+    </div>
+
+  </div>
+
+  <!-- Result section -->
+  <div id="result-box" style="display: none;">
+    <h2>Your Score</h2>
+    <p id="score"></p>
+
+    <div class="quiz-buttons">
+      <button onclick="location.reload()">Restart Quiz</button>
+      <button onclick="location.reload()">Take Another Quiz</button>
+      <button onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+  </div>
+
+</main>
+
 </body>
 </html>
