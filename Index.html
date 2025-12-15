@@ -2,28 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Study Vocabulary</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flashcards & Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <section class="home">
-    <h1>Study Vocabulary</h1>
-    <p>Practice words with flashcards or test yourself with quizzes.</p>
+  <!-- Homepage button (center top, with emoji, no arrow icon) -->
+  <header class="header">
+    <a class="home-btn" href="/" aria-label="Homepage">
+      <span class="home-emoji">🏠</span>
+      <span>Homepage</span>
+    </a>
+  </header>
 
-    <div class="options">
-      <a href="flashcards.html" class="option-card">
-        📘 Flashcards
-      </a>
+  <main>
+    <!-- Flashcard with invisible side navigation zones -->
+    <div class="flashcard-wrapper">
+      <div class="nav-zone left" id="prevZone" aria-label="Previous" title=""></div>
 
-      <a href="quiz.html" class="option-card">
-        🧠 Quiz
-      </a>
+      <div class="flashcard" id="flashcard" role="button" aria-label="Flip card" tabindex="0">
+        <div class="front" id="front"></div>
+        <div class="back" id="back"></div>
+      </div>
+
+      <div class="nav-zone right" id="nextZone" aria-label="Next" title=""></div>
     </div>
-  </section>
 
+    <!-- Quiz section -->
+    <section class="quiz-box" aria-live="polite">
+      <h3 id="quiz-question"></h3>
+      <div id="quiz-options"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
