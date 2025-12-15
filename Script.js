@@ -1,38 +1,47 @@
-const flashcard = document.getElementById('flashcard');
-
-let currentIndex = 0;
-const cards = [
-  {word: 'Parcel', pron: 'per-sell', def: 'a package', example: 'I received a parcel today.'},
-  {word: 'Ample', pron: 'am-puhl', def: 'more than enough', example: 'There was ample food.'},
-  {word: 'Benevolent', pron: 'bə-nev-uh-luhnt', def: 'kind, generous', example: 'She was benevolent to the poor.'}
+// Vocabulary dataset
+const vocab = [
+  {
+    word: "Serendipity",
+    pronunciation: "/ˌserənˈdipədē/",
+    meaning: "The occurrence of events by chance in a happy or beneficial way.",
+    sentence: "Through serendipity, she found the perfect book just when she needed it."
+  },
+  {
+    word: "Ephemeral",
+    pronunciation: "/ɪˈfɛmərəl/",
+    meaning: "Lasting for a very short time.",
+    sentence: "Sunset colors are ephemeral, fading almost as soon as they bloom."
+  },
+  {
+    word: "Ubiquitous",
+    pronunciation: "/juːˈbɪkwɪtəs/",
+    meaning: "Present, appearing, or found everywhere.",
+    sentence: "Smartphones have become ubiquitous in modern life."
+  },
+  {
+    word: "Ambivalent",
+    pronunciation: "/æmˈbɪvələnt/",
+    meaning: "Having mixed feelings or contradictory ideas about something or someone.",
+    sentence: "He felt ambivalent about moving—excited but nervous."
+  },
+  {
+    word: "Cacophony",
+    pronunciation: "/kəˈkɒfəni/",
+    meaning: "A harsh, discordant mixture of sounds.",
+    sentence: "The city street was a cacophony of horns and chatter."
+  },
+  {
+    word: "Perspicacious",
+    pronunciation: "/ˌpɜːrspɪˈkeɪʃəs/",
+    meaning: "Having a ready insight into and understanding of things.",
+    sentence: "Her perspicacious questions revealed the issue clearly."
+  }
 ];
 
-// Update flashcard content
-function updateCard(index) {
-  const front = flashcard.querySelector('.flashcard-front h3');
-  const back = flashcard.querySelector('.flashcard-back');
-  front.textContent = cards[index].word;
-  back.innerHTML = `
-    <p><strong>Pronunciation:</strong> ${cards[index].pron}</p>
-    <p><strong>Definition:</strong> ${cards[index].def}</p>
-    <p><strong>Example:</strong> ${cards[index].example}</p>
-  `;
-  flashcard.classList.remove('flipped');
-}
-
-updateCard(currentIndex);
-
-// Click flashcard for next/prev based on click side
-flashcard.addEventListener('click', (e) => {
-  const rect = flashcard.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  if (clickX > rect.width / 2) {
-    // Right side → next
-    currentIndex = (currentIndex + 1) % cards.length;
-  } else {
-    // Left side → previous
-    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-  }
-  updateCard(currentIndex);
-  flashcard.classList.toggle('flipped');
-});
+// Elements
+const card = document.getElementById("card");
+const wordEl = document.getElementById("word");
+const pronEl = document.getElementById("pronunciation");
+const meaningEl = document.getElementById("meaning");
+const sentenceEl = document.getElementById("sentence");
+const indexEl
