@@ -61,21 +61,22 @@ function render(i) {
 }
 
 // Flip card
+// Flip card
 flashcard.addEventListener("click", () => {
   flashcard.classList.toggle("flipped");
 });
 
-// Navigation zones (invisible areas around card)
-prevZone.addEventListener("click", () => {
+// Navigation zones
+prevZone.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevent triggering flip
   index = (index - 1 + vocab.length) % vocab.length;
   flashcard.classList.remove("flipped");
   render(index);
 });
-nextZone.addEventListener("click", () => {
+
+nextZone.addEventListener("click", (e) => {
+  e.stopPropagation();
   index = (index + 1) % vocab.length;
   flashcard.classList.remove("flipped");
   render(index);
 });
-
-// Initial render
-render(index);
