@@ -1,3 +1,4 @@
+/* Base page styles */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -6,7 +7,7 @@ body {
   text-align: center;
 }
 
-/* Header */
+/* Header with homepage button */
 .header {
   display: flex;
   justify-content: center;
@@ -19,92 +20,99 @@ body {
   font-weight: 600;
   color: #3b82f6;
   text-decoration: none;
-  background: #fff;
+  background: #ffffff;
   padding: 10px 16px;
   border-radius: 999px;
   box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.15);
 }
 .home-emoji { font-size: 1.2rem; }
 
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
-  color: #222;
-  text-align: center;
-}
-
-/* Header */
-.header {
+/* Wrapper that holds the card and the side navigation zones */
+.flashcard-wrapper {
   display: flex;
   justify-content: center;
-  padding: 20px;
-}
-.home-btn {
-  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  color: #3b82f6;
-  text-decoration: none;
-  background: #fff;
-  padding: 10px 16px;
-  border-radius: 999px;
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
-}
-.home-emoji { font-size: 1.2rem; }
-
-/* Flashcard */
-.flashcard-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
+  gap: 20px;              /* spacing so zones sit beside the card */
   margin-top: 40px;
-  width: 420px;   /* match card width */
-  height: 260px;  /* match card height */
 }
 
-/* Card */
+/* The flashcard itself */
 .flashcard {
-  width: 100%;
-  height: 100%;
+  width: 420px;
+  height: 260px;
   position: relative;
-  perspective: 1000px;
+  perspective: 1000px;   /* 3D flip perspective */
   cursor: pointer;
-  z-index: 2; /* card sits above background */
 }
 
-/* Navigation zones */
-.nav-zone {
+/* Card faces */
+.front, .back {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;          /* each side covers half */
-  cursor: pointer;
-  z-index: 3;          /* ensure zones sit ABOVE the card */
-  background: transparent; /* invisible */
+  inset: 0;
+  background: #ffffff;   /* white flashcard */
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25); /* nice shadow */
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  transition: transform 0.6s cubic-bezier(.2,.6,.2,1);
 }
-.nav-zone.left { left: 0; }
-.nav-zone.right { right: 0; }
 
-/* No visible background — zones are invisible but clickable */
-.nav-zone:hover {
-  background: transparent;
+.front {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
 }
-/* Quiz Section */
+
+.back {
+  transform: rotateY(180deg);
+  flex-direction: column;
+  font-size: 1rem;
+  text-align: left;
+  gap: 10px;
+}
+.back p {
+  margin: 0;
+  line-height: 1.45;
+}
+.back p strong {
+  color: #4a4a4a;
+}
+
+/* Flip state */
+.flashcard.flipped .front { transform: rotateY(180deg); }
+.flashcard.flipped .back  { transform: rotateY(360deg); }
+
+/* Invisible navigation side zones (no arrows/buttons visible) */
+.nav-zone {
+  width: 120px;          /* side area width */
+  height: 260px;         /* same height as card */
+  cursor: pointer;
+  background: transparent;   /* completely invisible */
+}
+.nav-zone.left  { /* left zone beside card */ }
+.nav-zone.right { /* right zone beside card */ }
+
+/* Optional: subtle cursor hint without visuals */
+.nav-zone { cursor: e-resize; }
+.nav-zone.left { cursor: w-resize; }
+
+/* Quiz section styles */
 .quiz-box {
-  background: white;
+  background: #ffffff;
   width: 420px;
   margin: 60px auto;
-  padding: 40px;
+  padding: 32px 24px;
   border-radius: 16px;
   box-shadow: 0 15px 30px rgba(0,0,0,0.2);
   text-align: left;
 }
-
 .quiz-box h3 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
+  font-size: 1.25rem;
+  margin: 0 0 16px 0;
 }
 
 .quiz-option {
@@ -117,15 +125,17 @@ body {
   border-radius: 8px;
   cursor: pointer;
   background: #f0f4ff;
-  transition: background 0.3s;
+  color: #222;
+  transition: background 0.25s ease;
 }
-.quiz-option:hover {
-  background: #dbe6ff;
-}
-.quiz-option.correct {
-  background: #c8f7c5;
-}
-.quiz-option.wrong {
-  background: #f7c5c5;
-}
+.quiz-option:hover { background: #dbe6ff; }
+.quiz-option.correct { background: #c8f7c5; }
+.quiz-option.wrong   { background: #f7c5c5; }
 
+/* Accessibility focus */
+.home-btn:focus-visible,
+.quiz-option:focus-visible,
+.flashcard:focus-visible {
+  outline: 3px solid rgba(59,130,246,0.35);
+  outline-offset: 2px;
+}
