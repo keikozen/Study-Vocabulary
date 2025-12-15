@@ -3,62 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flashcards</title>
-
-  <!-- Montserrat font -->
+  <title>Flashcards & Quiz</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top center homepage button -->
+  <!-- Homepage button -->
   <header class="header">
-    <a class="home-btn" href="/" aria-label="Go to homepage">
+    <a class="home-btn" href="/">
       <span class="home-emoji">🏠</span>
       <span>Homepage</span>
     </a>
   </header>
 
-  <!-- Main stage -->
-  <main class="stage">
-    <!-- Left and right navigation zones -->
-    <button class="nav-zone left" aria-label="Previous card"></button>
-    <button class="nav-zone right" aria-label="Next card"></button>
-
-    <!-- Card with 3D flip -->
-    <div class="card-wrap" id="cardWrap" aria-live="polite">
-      <div class="card" id="card" role="button" aria-label="Flip card" tabindex="0">
-        <!-- Front face: word -->
-        <section class="face front">
-          <div class="word" id="word">Serendipity</div>
-        </section>
-
-        <!-- Back face: pronunciation, meaning, sentence -->
-        <section class="face back">
-          <div class="details">
-            <div class="row">
-              <div class="label">Pronunciation</div>
-              <div class="value" id="pronunciation">/ˌserənˈdipədē/</div>
-            </div>
-            <div class="row">
-              <div class="label">Meaning</div>
-              <div class="value" id="meaning">The occurrence of events by chance in a happy or beneficial way.</div>
-            </div>
-            <div class="row">
-              <div class="label">In a sentence</div>
-              <div class="sentence" id="sentence">Through serendipity, she found the perfect book just when she needed it.</div>
-            </div>
-          </div>
-        </section>
+  <!-- Flashcard Section -->
+  <main>
+    <div class="flashcard-container">
+      <div class="flashcard" id="flashcard">
+        <div class="front" id="front">Serendipity</div>
+        <div class="back" id="back">
+          <p><strong>Pronunciation:</strong> /ˌserənˈdipədē/</p>
+          <p><strong>Meaning:</strong> The occurrence of events by chance in a happy or beneficial way.</p>
+          <p><strong>Sentence:</strong> Through serendipity, she found the perfect book just when she needed it.</p>
+        </div>
       </div>
     </div>
 
-    <div class="index-indicator" id="indexIndicator">1 / 6</div>
+    <!-- Quiz Section -->
+    <section class="quiz-box">
+      <h3>What does "Serendipity" mean?</h3>
+      <button class="quiz-option">A lucky discovery by chance</button>
+      <button class="quiz-option">A loud, harsh sound</button>
+      <button class="quiz-option">Something that lasts a short time</button>
+      <button class="quiz-option">Being present everywhere</button>
+    </section>
   </main>
 
-  <!-- External JS -->
   <script src="script.js"></script>
 </body>
 </html>
