@@ -60,63 +60,33 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  width: 420px;   /* match card width */
+  height: 260px;  /* match card height */
 }
 
+/* Card */
 .flashcard {
-  width: 420px;
-  height: 260px;
+  width: 100%;
+  height: 100%;
   position: relative;
   perspective: 1000px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 2; /* card sits above background */
 }
 
-.front, .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  transition: transform 0.6s;
-}
-
-.front {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.back {
-  transform: rotateY(180deg);
-  flex-direction: column;
-  font-size: 1rem;
-  text-align: left;
-  gap: 8px;
-}
-
-.flashcard.flipped .front {
-  transform: rotateY(180deg);
-}
-.flashcard.flipped .back {
-  transform: rotateY(360deg);
-}
-
-/* Invisible navigation zones */
+/* Navigation zones */
 .nav-zone {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 25%;
+  width: 50%;          /* each side covers half */
   cursor: pointer;
-  z-index: 1;
+  z-index: 3;          /* ensure zones sit ABOVE the card */
+  background: transparent; /* invisible */
 }
 .nav-zone.left { left: 0; }
 .nav-zone.right { right: 0; }
+
 /* No visible background — zones are invisible but clickable */
 .nav-zone:hover {
   background: transparent;
@@ -158,3 +128,4 @@ body {
 .quiz-option.wrong {
   background: #f7c5c5;
 }
+
